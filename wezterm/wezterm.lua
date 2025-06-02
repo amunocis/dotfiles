@@ -21,6 +21,19 @@ config.color_scheme = "Tokyo Night"
 
 -- Atajos de Teclado para Panes
 config.keys = {
+  -- Mapeos para tilde (~) - múltiples opciones para compatibilidad
+  {
+    key = 'ñ',
+    mods = 'ALT',
+    action = wezterm.action.SendString('~'),
+  },
+  -- Alternativa: Alt+n para tilde (funciona en todos los teclados)
+  {
+    key = 'n',
+    mods = 'ALT|SHIFT',
+    action = wezterm.action.SendString('~'),
+  },
+  
   -- Dividir pane verticalmente (nuevo pane a la derecha)
   {
     key = 'E',
@@ -44,7 +57,6 @@ config.keys = {
   { key = 'RightArrow', mods = 'CTRL|SHIFT', action = wezterm.action.ActivatePaneDirection 'Right' },
   { key = 'UpArrow',    mods = 'CTRL|SHIFT', action = wezterm.action.ActivatePaneDirection 'Up' },
   { key = 'DownArrow',  mods = 'CTRL|SHIFT', action = wezterm.action.ActivatePaneDirection 'Down' },
-
   -- Cerrar el pane actual
   { key = 'W', mods = 'CTRL|SHIFT', action = wezterm.action.CloseCurrentPane { confirm = false } },
 }
