@@ -3,8 +3,8 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 -- Fuente
-config.font = wezterm.font("JetBrains Mono Nerd Font")
-config.font_size = 14.0
+config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.font_size = 15.0
 
 -- Pestañas
 config.enable_tab_bar = true
