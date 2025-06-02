@@ -16,13 +16,16 @@ return {
             local lspconfig = require("lspconfig")
             local cmp = require("cmp")
             local luasnip = require("luasnip")
-
             require("mason").setup()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "kotlin_language_server" },
+                ensure_installed = { 
+                    "lua_ls", 
+                    "kotlin_language_server",
+                    "pylsp"  -- 👈 Solo agregar esta línea
+                },
                 -- Si quieres eslint, verifica el nombre en :Mason y añádelo aquí. Ej: "eslint_d"
             })
-
+            -- El resto de tu configuración queda exactamente igual...
             cmp.setup({
                 snippet = {
                     expand = function(args)
@@ -45,11 +48,9 @@ return {
                     { name = "path" },
                 }),
             })
-
             local on_attach = function(client, bufnr)
                 local map = vim.keymap.set
                 local opts = { buffer = bufnr, noremap = true, silent = true }
-
                 map('n', 'gd', vim.lsp.buf.definition, opts)
                 map('n', 'gr', vim.lsp.buf.references, opts)
                 map('n', 'gD', vim.lsp.buf.declaration, opts)
@@ -60,7 +61,6 @@ return {
                 map('n', '<leader>e', vim.diagnostic.open_float, opts)
                 map('n', '[d', vim.diagnostic.goto_prev, opts)
                 map('n', ']d', vim.diagnostic.goto_next, opts)
-
                 if client.supports_method("textDocument/formatting") then
                     vim.api.nvim_create_autocmd("BufWritePre", {
                         group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
@@ -71,9 +71,7 @@ return {
                     })
                 end
             end
-
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
             for _, server_name in ipairs(require("mason-lspconfig").get_installed_servers()) do
                 lspconfig[server_name].setup({
                     on_attach = on_attach,
