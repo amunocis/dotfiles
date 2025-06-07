@@ -9,6 +9,7 @@ require("lazy").setup({
         { import = "plugins.python" },
         { import = "plugins.oneliners" },
         { import = "plugins.markdown" },
+ --       { import = "plugins.pico8" },
     },
     -- El resto de las opciones de lazy.setup se mantienen igual
     install = {
