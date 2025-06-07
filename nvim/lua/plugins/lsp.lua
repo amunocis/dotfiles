@@ -21,11 +21,10 @@ return {
                 ensure_installed = { 
                     "lua_ls", 
                     "kotlin_language_server",
-                    "pylsp"  -- 👈 Solo agregar esta línea
+                    "pico8_ls",
+                    "pylsp"
                 },
-                -- Si quieres eslint, verifica el nombre en :Mason y añádelo aquí. Ej: "eslint_d"
             })
-            -- El resto de tu configuración queda exactamente igual...
             cmp.setup({
                 snippet = {
                     expand = function(args)
