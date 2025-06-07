@@ -1,6 +1,6 @@
 return {
   "iamcco/markdown-preview.nvim",
-  build = "call mkdp#util#install()",
+  build = "cd app && npm install",
   ft = { "markdown" }, -- Cargar solo para archivos markdown
   config = function()
     -- Opciones opcionales de configuración, puedes dejarlas por defecto
