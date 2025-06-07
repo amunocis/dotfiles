@@ -13,3 +13,9 @@ vim.opt.ignorecase = true      -- Ignorar mayúsculas/minúsculas al buscar
 vim.opt.smartcase = true       -- A menos que la búsqueda contenga mayúsculas
 
 vim.opt.wrap = false           -- No envolver líneas largas
+
+vim.filetype.add({
+  extension = {
+    p8 = "lua"
+  }
+})
